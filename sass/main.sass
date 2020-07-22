@@ -12,7 +12,6 @@
 
 .button
 	float: left
-	max-width: 100px
 	min-width: 100%
 	display: block
 	// margin: 1em
@@ -165,6 +164,8 @@ header
             font-weight: 700
             color: #ffffff
             border-bottom: 10px #fff700 solid
+            @media screen and ( max-width: 1366px )
+                top: 120px
         p
             position: absolute
             top: 300px
@@ -173,6 +174,8 @@ header
             color: #e8e8e8
             line-height: 25px
             font-size: 18px
+            @media screen and ( max-width: 1366px )
+                top: 200px
 
 section
     width: 85%
@@ -180,6 +183,9 @@ section
     margin-top: 50px
     display: flex
     justify-content: space-between
+    @media screen and ( max-width: 1200px )
+        flex-wrap: wrap
+        width: 100%
 
 .weather, .trend, .news--line, .main--news, .sights-foot
     h2
@@ -213,6 +219,7 @@ section
         display: inline-table
         border-left: 1px solid #cbcbcb
         max-width: 220px
+        padding-left: 5px
         h3
             padding-bottom: 4px
             font-size: 20px
@@ -353,5 +360,25 @@ footer
 /////////////ADAPTIVE///////////////
 
 @media screen and ( max-width: 1870px  )
-    .trend, .sights-head
+    .trend, .sights-head, .main--news
         margin-left: 5%
+@media screen and ( max-width: 1365px )
+    .bgrd p
+        max-width: 70%
+        top: 100px
+@media screen and ( max-width: 1200px )
+    .weather, .trend
+        width: 45%
+    .inner--info
+        justify-content: space-around
+    .news--line
+        width: 100%
+        .news--description
+            width: 100%
+            p
+                min-width: 100%
+    .main--news
+        margin-left: 0
+    .sight-foot
+        flex-wrap: wrap
+        justify-content: space-around
