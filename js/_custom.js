@@ -1,9 +1,5 @@
 $(document).ready(function(){
-
-    function burger(){
-        $(".up").css({
-            'margin-top': '0',
-        })
-    }
-
-})
+    $('.header--burger').click(function(){
+    $(".menu").toggleClass('down');
+    });
+});
