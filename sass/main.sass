@@ -7,6 +7,11 @@
     padding: 0
     font-family: Roboto
 
+html, body
+    width: 100%
+
+
+
 ////////////////start button//////////////////////////
 /* Rayen */
 
@@ -102,22 +107,43 @@
 
 
 header
-    display: flex
-    justify-content: center
     position: fixed
+    width: 100%
     top: 0
     left: 0
-    width: 100% 
-    z-index: 10
-    
+    z-index: 20
     &::before
-        content: ""
+        content: ''
         position: absolute
         top: 0
         left: 0
         width: 100%
-        height: 80px
+        height: 100%
         background-color: #000000
+    .container
+        max-width: 640px
+        margin: 0 auto
+        padding: 0 10px
+        overflow: auto
+        .header--body
+            position: relative
+            z-index: 12
+            nav
+                z-index: 12
+                ul
+                    display: flex
+                    li
+                        list-style: none
+                        padding: 30px 25px 25px 25px
+                        transition: all .5s
+                        &:hover
+                            background-color: #fff700
+                            a
+                                color: #000000
+                        a
+                            color: #ffffff
+                            text-decoration: none
+                            font-size: 21px
     .logo
         position: absolute
         left: 5%
@@ -131,73 +157,82 @@ header
             position: absolute
             left: -20%
             top: -50%
-    ul
-        margin-left: 0
-        padding-left: 0
-        display: flex
-        li
-            z-index: 12
-            list-style-type: none
-            padding: 28px
-            transition: .5s
-            &:hover
-                background-color: #fff700
-                a
-                    color: #000000
-            a
-                color: #fff
-                text-decoration: none
-                font-size: 20px
+        @media screen and ( max-width: 970px )
+            left: 50%
+            transform: translate(-50%)
+            z-index: 14
+
+.header--burger
+    display: none
+    cursor: pointer
+    span
+        position: absolute
+        background-color: #ffffff
+        height: 2px
+        width: 100%
+        top: 12px
+        transition: all.5s ease 0s
+
+.header--burger.active
+    span
+        transform: scale(0)
+    &::before
+        transform: rotate(45deg)
+        top: 12px
+    &::after
+        transform: rotate(135deg)
+        bottom: 12px
+
+
+@media screen and ( max-width: 970px )
+    header
+        &::before
+            height: 80px
     .header--burger
-        display: none
+        display: block
+        position: absolute
         width: 62px
         height: 25px
-        top: 20px
-        position: absolute
-        z-index: 12
-        left: 20px
-        cursor: pointer
-        span
-            position: absolute
-            background-color: #ffffff
-            left: 0
-            width: 100%
-            height: 2px
-            top: 12px
+        top: 25px
+        left: 50px
+        z-index: 14
         &::before, &::after
-            content: ""
+            content: ''
             background-color: #ffffff
-            position: absolute
-            width: 100% 
             height: 1px
-            left: 0
-        &::before
-            top: 0
+            width: 100%
+            position: absolute
+            transition: all.5s ease 0s
         &::after
             bottom: 0
-
-.up
-    margin-top: -200%
-    transition: .5s liner
-
-@media screen and ( max-width: 960px )
-    header 
-        .logo
-            left: 50%
-            transform: translate(-50%,-50%)
-            margin-top: 13px
-        nav 
+        &::before
+            top: 0
+    header .container .header--body nav
+        position: fixed
+        top: 0
+        left: 0
+        width: 100%
+        height: auto
+        background-color: #000000
+        padding-top: 70px
+        top: -200%
+        transition: all .5s ease 0s
+        overflow: auto
+        ul
+            flex-direction: column
+            text-align: center
             width: 100%
-            ul
-                display: flex
-                flex-direction: column
-                width: 100%
-                text-align: center
-                margin-top: 80px
-                background-color: #000000
-        .header--burger
-            display: block
+            li
+                padding: 40px 0
+    header .container .header--body nav.active
+        top: 0
+        overflow-y: auto
+    body.lock
+        overflow: hidden
 
+@media screen and ( max-width: 400px )
+    .header--burger
+        left: 15px
 //////////////HEADER////////////////////
 
 .inner
@@ -221,7 +256,7 @@ header
             position: absolute
             font-family: Campton
             top: 200px
-            left: 10%
+            left: 8%
             padding-right: 42px
             font-size: 40px
             font-weight: 700
@@ -229,16 +264,32 @@ header
             border-bottom: 10px #fff700 solid
             @media screen and ( max-width: 1366px )
                 top: 120px
+            @media screen and ( max-width: 600px )
+                font-size: 28px
+                padding-right: 0
+            @media screen and ( max-width: 420px )
+                font-size: 25px
+                left: 5%
         p
             position: absolute
             top: 300px
-            left: 10%
+            left: 8%
             width: 80%
             color: #e8e8e8
             line-height: 25px
             font-size: 18px
             @media screen and ( max-width: 1366px )
                 top: 200px
+            @media screen and ( max-width: 600px )
+                font-size: 14px
+                top: 180px
+                line-height: 22px
+            @media screen and ( max-width: 420px )
+                font-size: 12px
+                width: 24em
+                display: inline-block
+                left: 5%
+                line-height: 20px
 
 section
     width: 85%
@@ -354,21 +405,60 @@ section
             padding-top: 5px
 
 .main--news
+    @media screen and ( max-width: 1050px )
+        margin-bottom: 100px
+    @media screen and ( max-width: 750px )
+        margin-bottom: 50px
     .slider
         position: relative
         img
             max-width: 100%
+            @media screen and ( max-width: 440px )
+                width: 100%
+                height: 200%
+                object-fit: cover
+                object-position: center center
         .buttons
             width: 100%
             position: absolute
             top: 80%
             background-color: #ffffff
             opacity: 0.9
+            @media screen and ( max-width: 1650px )
+                top: 70%
+            @media screen and ( max-width: 800px )
+                top: 50%
+            @media screen and ( max-width: 400px )
+                top: 30%
+            .bnt--prev, .bnt--next
+                position: absolute
+                width: 20px
+                height: 36px
+                border: none
+                cursor: pointer
+                top: 30%
+            .bnt--prev
+                left: 5%
+                background: url('../img/images/prev.png') center
+                @media screen and ( max-width: 500px )
+                    left: 0
+            .bnt--next
+                right: 5%
+                background: url('../img/images/next.png') center
+                @media screen and ( max-width: 500px )
+                    right: 0
             .text
                 text-align: center
+                h3
+                    font-size: 12
+                    margin: 0
+                    padding: 0
                 p
                     width: 53%
                     margin: 0 auto
+                    @media screen and ( max-width: 500px )
+                        width: 90%
+                        line-height: 16px
 
 //////////////FOOTER////////////////////
 
@@ -460,3 +550,17 @@ footer
             width: 50%
             padding: 0
             padding-bottom: 50px
+@media screen and ( max-width: 540px )
+    .inner--info
+        display: block
+        .weather, .trend, .sights-head
+            margin-left: 0
+            width: 100%
+            margin-bottom: 20px
+    footer
+        ul
+            margin-top: 100px
+            text-align: center
+            li
+                padding: 20px
+
